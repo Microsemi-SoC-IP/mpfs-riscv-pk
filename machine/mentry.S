@@ -261,7 +261,7 @@ do_reset:
   csrr a3, mhartid
   slli a2, a3, RISCV_PGSHIFT
   add sp, sp, a2
-
+  la a1, mi_dtb
   # Boot on the first hart
   beqz a3, init_first_hart
 
@@ -298,3 +298,12 @@ do_reset:
   .align RISCV_PGSHIFT
 stacks:
   .skip RISCV_PGSIZE * MAX_HARTS
+
+  .section .rodata
+  .global mi_dtb	
+  .type mi_dtb, @object
+  .align 8
+mi_dtb:
+  .incbin "../../riscvpc.dtb"
+  .align 8
+

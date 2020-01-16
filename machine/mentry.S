@@ -304,6 +304,6 @@ stacks:
   .type mi_dtb, @object
   .align 8
 mi_dtb:
-  .incbin "../../riscvpc.dtb"
+  .incbin "../../work/riscvpc.dtb"
   .align 8
 
